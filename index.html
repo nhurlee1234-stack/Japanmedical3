@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan Medical — Бүтээгдэхүүний каталог 2026</title>
+<style>
+  :root{
+    --bg: #0a1612;
+    --panel: #0f2019;
+    --panel2: #122a20;
+    --accent: #17b978;
+    --accent2: #7fe0b4;
+    --text: #eef5f0;
+    --muted: #9db3a8;
+    --line: rgba(23,185,120,0.18);
+  }
+  * { box-sizing: border-box; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+  }
+  header{
+    background: linear-gradient(135deg, #0b3d2e, #0a1612 75%);
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  header h1{
+    margin:0;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+  }
+  header p{
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--accent2);
+  }
+  nav{
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    -webkit-overflow-scrolling: touch;
+  }
+  nav a{
+    flex: none;
+    font-size: 12.5px;
+    color: var(--accent2);
+    text-decoration: none;
+    background: rgba(23,185,120,0.1);
+    border: 1px solid var(--line);
+    padding: 7px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  main{
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 18px 16px 60px;
+  }
+  section{
+    margin-bottom: 18px;
+    scroll-margin-top: 110px;
+  }
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .card{
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 18px 18px 6px;
+    border: 1px solid var(--line);
+  }
+  .card.has-thumb{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 6px;
+    overflow: hidden;
+  }
+  .card.has-thumb .thumb{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    background: none;
+  }
+  .card.has-thumb .card-body{
+    padding: 16px 18px 0;
+  }
+  .card .tag{
+    color: var(--accent2);
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .card h2{
+    margin: 0 0 10px;
+    font-size: 19px;
+    color: #ffffff;
+    font-weight: 800;
+  }
+  .card .desc{
+    font-size: 13.5px;
+    color: var(--text);
+    margin-bottom: 12px;
+    opacity: 0.92;
+  }
+  .block{
+    border-top: 1px dashed var(--line);
+    padding: 10px 0;
+  }
+  .block-title{
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+  }
+  .block ul{
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13.5px;
+  }
+  .block li{
+    margin-bottom: 4px;
+  }
+  .grid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 16px;
+  }
+  .grid2 ul{ margin: 0; padding-left: 18px; font-size: 13.5px; }
+  .pill-row{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .pill{
+    font-size: 12px;
+    background: rgba(23,185,120,0.12);
+    border: 1px solid var(--line);
+    color: var(--accent2);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .company-card p{
+    font-size: 13.5px;
+    margin: 4px 0 14px;
+  }
+  .company-card .label{
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--accent2);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 12px;
+  }
+  .partners{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 14px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .partners h3{
+    grid-column: 1 / -1;
+    font-size: 13px;
+    color: var(--accent2);
+    margin: 10px 0 2px;
+  }
+  .contact-card a{
+    color: var(--accent2);
+  }
+  .contact-row{
+    font-size: 14px;
+    padding: 6px 0;
+    border-top: 1px dashed var(--line);
+  }
+  .contact-row:first-of-type{ border-top: none; }
+  footer{
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    padding: 26px 20px 30px;
+  }
+  .top-btn{
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #06251a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .top-btn.show{
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<header>
+  <h1>JAPAN MEDICAL</h1>
+  <p>Бүтээгдэхүүний каталог · 2026</p>
+</header>
+
+<nav>
+  <a href="#company">Компани</a>
+  <a href="#p1">Витамин C</a>
+  <a href="#p2">Наалт</a>
+  <a href="#p3">Глюкозамин</a>
+  <a href="#p4">Коллаген ундаа</a>
+  <a href="#p5">Гүзээлзгэнэ желли</a>
+  <a href="#p6">Бактери желли</a>
+  <a href="#p7">Ногооны желли</a>
+  <a href="#p8">Ногооны шүүс</a>
+  <a href="#p9">Ногооны шүүс 2</a>
+  <a href="#partners">Түншүүд</a>
+  <a href="#contact">Холбоо барих</a>
+</nav>
+</div>
+
+<main>
+
+  <section id="company" class="card company-card">
+    <div class="tag">Компанийн танилцуулга</div>
+    <h2>Жэй Пи Эн Эм ХХК (Жапан Медикал)</h2>
+
+    <div class="label">Компанийн нэр</div>
+    <p>Жэй Пи Эн Эм ХХК (Жапан Медикал ХХК)</p>
+
+    <div class="label">Үүсгэн байгуулагдсан он</div>
+    <p>2014 он</p>
+
+    <div class="label">Үүсгэн байгуулагч</div>
+    <p>Л.Оюунзул (Хүний их эмч, Эм судлалын ухааны доктор)</p>
+
+    <div class="label">Үйл ажиллагаа</div>
+    <p>
+      Эм, эмнэлгийн хэрэгсэл, хүнсний нэмэлт бүтээгдэхүүний импортлон борлуулалт<br>
+      Эрүүл мэндийн боловсрол олгох сургалт, семинар<br>
+      Эрүүл мэнд, анагаах ухааны мэргэжлийн орчуулга
+    </p>
+
+    <div class="label">Гол давуу тал</div>
+    <p>Албан ёсны түншлэл, чанартай бүтээгдэхүүн, мэргэжлийн зөвлөх баг, хэрэглэгчийн боловсрол.</p>
+
+    <div class="label">Алсын хараа</div>
+    <p>"Нотолгоонд суурилсан эрүүл мэндийн шийдлийн тэргүүлэх экосистемийг цогцлоож, монгол хүний эрүүл урт наслалтыг уртасгахад хувь нэмрээ оруулна."</p>
+
+    <div class="label">Эрхэм зорилго</div>
+    <p>"Чанартай бүтээгдэхүүн, мэргэжлийн зөвлөгөөгөөр гэр бүл бүрийн өдөр тутмын эрүүл амьдралд хувь нэмэр оруулах."</p>
+  </section>
+
+  <section id="p1" class="card has-thumb">
+    <img class="thumb" src="p1.jpg" alt="Витамин C 1200 мг">
+    <div class="card-body">
+    <div class="tag">Хүчирхэг Япон дархлаа</div>
+    <h2>ВИТАМИН C 1200 мг</h2>
+    <div class="desc">Япон улсын Кокандо эмийн компанийн олон жилийн судалгааны үр дүнд бүтээгдсэн эрүүл мэнд, гоо сайхны цогц витамин бөгөөд дархлаа дэмжиж, арьсыг эрүүл, өнгөлөг, толигор, булбарай, залуу байлгахад шаардагдах бүх төрлийн амин дэм, тэжээлт бодисуудыг агуулсан төгс найрлага бүхий бүтээгдэхүүн юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Ханиад томуу зэрэг халдварт өвчнөөс урьдчилан сэргийлнэ</li>
+        <li>Цусны эргэлтийг сайжруулж, эд эсийн нөхөн төлжилтийг дэмжинэ</li>
+        <li>Арьсыг цайруулж, сэвх нөсөө толбо үүсэхээс хамгаална</li>
+        <li>Арьсыг гадны таагүй нөлөөллөөс хамгаална</li>
+        <li>Арьсыг чийгшүүлж, уян хатан байдлыг нь сэргээнэ</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Онцлог</div>
+      <ul><li>Нэмэлт 10 төрлийн найрлагатай учир эрүүл мэнд, гоо сайхны цогц витамин. Авч явах болон хэрэглэхэд хялбар.</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Витамин C 1200 мг</li>
+          <li>Сүүн хүчлийн бактери</li>
+          <li>Хиалуроны хүчил</li>
+          <li>Витамин E</li>
+          <li>Серамид</li>
+        </ul>
+        <ul>
+          <li>Коллаген пептид</li>
+          <li>Зөгийн сүүнцэр</li>
+          <li>Хүн орхоодой</li>
+          <li>Витамин B2</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Өдөрт 1-2 ширхгийг шуудан эсвэл усаар дараулж хэрэглэнэ</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">60 ширхэг</span><span class="pill">21 ширхэг</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p2" class="card has-thumb">
+    <img class="thumb" src="p2.jpg" alt="Диклофенактай наалт">
+    <div class="card-body">
+    <div class="tag">Үе мөчний өвдөлт намдаах</div>
+    <h2>ДИКЛОФЕНАКТАЙ НААЛТ</h2>
+    <div class="desc">Найрлагадаа диклофенак натри агуулсан үе мөчний өвдөлт, мөр нурууны өвдөлт, булчингийн өвдөлт, булгаралт зэргт хэрэглэдэг өвдөлт намдаах, үрэвсэл бууруулах үйлчилгээтэй хүйтэн наалт юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Үе мөчний өвдөлт, мөр нуруу, гар бугуй, тохой, булчингийн өвдөлт, мөр хөшиж үед өвдөлт намдаах</li>
+        <li>Яс, үе мөчний үрэвсэл, гэмтлийн дараах зөөлөн эд ба үений үрэвслийг намдаах</li>
+        <li>Үений эмгэгтэй холбоотой хавагнах ба өвдөлтийн хам шинж илрэх, булчингийн өвдөлт, булгарах үед өвдөлт намдаах</li>
+        <li>Хэрхийн гаралтай зөөлөн эдийн үрэвсэл, үений үрэвслийн үед үрэвсэл дарах</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <p style="font-size:13.5px; margin:0 0 4px;">Гол найрлага: Диклофенак натри (1 ширхэг наалтад 100мг)</p>
+      <p style="font-size:13px; color:var(--muted); margin:0;">Бусад нэмэлт найрлага: D-сорбитол, өтгөрүүлсэн глицерин, саармагжуулсан полиакрилат, желатин, каолин, карбоксиметил целлюлоз натри, карбоксивинил полимер, метил акрилат ба 2-этилгексил акрилат кополимер, полиоксиэтилен нонилфенил эфир, l-ментол, полисорбат 80, натрийн гидросульфат, хүчил шүлт тэнцвэржүүлэгч, хөнгөн цагааны глицинат, этанол, титаны исэл, сорбитан моноолеат.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul>
+        <li>Өдөрт нэг удаа наалтыг хуулан авч өвчтэй, зовуурьтай хэсэгтээ наажхэрэглэнэ</li>
+        <li>Нэг удаа 2 ширхэгээс илүү наажхэрэглэж болохгүй</li>
+        <li>Ижил найрлагатай өөр бүтээгдэхүүнтэй хамт хэрэглэж болохгүй</li>
+        <li>Нүд болон салст бүрхэвчийн эргэн тойронд, ил шархтай хэсэг, мөөгөнцөр, идээт үрэвсэлтэй, хэт чийгтэй арьсанд наажболохгүй</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">7 ширхэг</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p3" class="card has-thumb">
+    <img class="thumb" src="p3.jpg" alt="Глюкозамин Point Neo">
+    <div class="card-body">
+    <div class="tag">Хөдөлгөөний эрч хүч</div>
+    <h2>ГЛЮКОЗАМИН POINT NEO</h2>
+    <div class="desc">Тус бүтээгдэхүүн нь найрлагадаа глюкозамин, хондроитин сульфат, коллаген, MSM, HAS-II, протеогликан, имидазол дипептид, цагаан гаа зэргийг агуулсан үе мөчний хэвийн үйл ажиллагааг бэхжүүлэн дэмжих, яс мөгөөрс, үенд тэжээл өгөх, үений үрэвсэл болон ясны сийрэгжилтээс урьдчилан сэргийлэх үе мөчний хөдөлгөөний уян хатан байдлыг хангах үйлчилгээтэй биологийн идэвхт бүтээгдэхүүн юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Үе мөчний хэвийн үйл ажиллагааг бэхжүүлэн дэмжих</li>
+        <li>Яс мөгөөрс, үенд тэжээл өгөх</li>
+        <li>Коллаген болон глюкозамины хэрэгцээг хангаж, дутагдлаас урьдчилан сэргийлэх</li>
+        <li>Ясны сийрэгжилтээс урьдчилан сэргийлэх</li>
+        <li>Үе мөчний үрэвслээс урьдчилан сэргийлэх</li>
+        <li>Үе мөчний хөдөлгөөний уян хатан байдлыг сайжруулах</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Глюкозамин</li>
+          <li>Хондроитин</li>
+          <li>Коллаген (2-р төрлийн)</li>
+          <li>Имидазол дипептид</li>
+        </ul>
+        <ul>
+          <li>MSM (Метилсульфанилметан)</li>
+          <li>Протеогликан</li>
+          <li>HAS-II (тахианы сарвууны экстракт)</li>
+          <li>Ajuga decumbens (эмийн ургамал)</li>
+          <li>Цагаан гаа</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Өдөрт 1 удаа 5 ширхгээр хоолны дараа хүйтэн болон бүлээн усаар дараулан ууна</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">150 ширхэг</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p4" class="card has-thumb">
+    <img class="thumb" src="p4.jpg" alt="Beauty Collagen Drink">
+    <div class="card-body">
+    <div class="tag">Эрүүл мэнд, гоо сайхны коллаген ундаа</div>
+    <h2>BEAUTY COLLAGEN DRINK</h2>
+    <div class="desc">Япон улсын NISSHIN эмийн компанийн бүтээгдэхүүн BEAUTY COLLAGEN α нь хүний биед шаардлагатай олон төрлийн шимт бодис болон амин дэмээр баяжуулсан, шууд уух зориулалттай эрүүл мэнд, гоо сайхны ундаа юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Арьсыг чийгшүүлж, арьсны толигор уян хатан байдлыг сэргээх</li>
+        <li>Суларсан арьсыг чангалан үрчлээ үүсэхээс сэргийлэх</li>
+        <li>Арьсны сэвх нөсөө толбыг бүдгэрүүлж, дахин үүсэхээс хамгаалах</li>
+        <li>Үс хумсыг бэхжүүлж, хугарч гэмтэхийг багасган эрүүл ургалтыг дэмжинэ</li>
+        <li>Яс сийрэгжихээс сэргийлэн ясны зөөлөн эд үрэгдэж элэгдэхээс хамгаална</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <p style="font-size:13.5px; margin:0 0 6px;">Коллаген пептид 5000 мг + Протеогликан 20000 мкг</p>
+      <div class="pill-row">
+        <span class="pill">Хиалуроны хүчил 2 мг</span>
+        <span class="pill">Коэнзим Q10 1 мг</span>
+        <span class="pill">Витамин C 25 мг</span>
+        <span class="pill">Витамин B2 1 мг</span>
+        <span class="pill">Витамин Bo 1 мг</span>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Өдөрт 1 ширхэг (50 мл)-ийг орой унтахаасаа 60-90 минутын өмнө зөөлөн сэгсэрч шууд уужхэрэглэнэ</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">50 мл × 10 ширхэг</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p5" class="card has-thumb">
+    <img class="thumb" src="p5.jpg" alt="Гүзээлзгэнэтэй цэлцгэнүүр">
+    <div class="card-body">
+    <div class="tag">Авсаархан, амин дэмтэй амтат желли</div>
+    <h2>ГҮЗЭЭЛЗГЭНЭТЭЙ ЦЭЛЦГЭНҮҮР</h2>
+    <div class="desc">Япон улсын Фүкуока мужийн алдарт "АМАО" сортын гүзээлзгэнэ болон олон төрлийн амин дэм, эрдэс бодисын найрлагатай бүх насныханд зориулсан эрүүл амтлаг цэлцгэнүүр.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Цус төлжүүлэх</li>
+        <li>Цус багадалтаас урьдчилан сэргийлэх</li>
+        <li>Цус өтгөрөлтөөс сэргийлэх</li>
+        <li>Дархлаа дэмжих</li>
+        <li>Арьсыг эрүүл өнгөлөг толигор болгох</li>
+        <li>Гэдэсний хэвийн орчныг сайжруулах</li>
+        <li>Судасны хатуурлаас сэргийлэх</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Сүүн хүчлийн бактери</li>
+          <li>Амао гүзээлзгэнэ</li>
+          <li>Инжир жимс</li>
+          <li>Алимны цуу</li>
+          <li>Төмөр</li>
+          <li>Кальци</li>
+          <li>Фолийн хүчил</li>
+        </ul>
+        <ul>
+          <li>Витамин B12</li>
+          <li>Витамин C</li>
+          <li>Хүнсний эслэг</li>
+          <li>Эрдэс давс</li>
+          <li>Амин хүчилүүд</li>
+          <li>60 төрлийн ургамлын фермент</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Бүх насны хүмүүс (2-оос дээш) өдөрт 1-2 ширхгийг шуудзадалж иднэ</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">150 г (15г × 10 ширхэг)</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p6" class="card has-thumb">
+    <img class="thumb" src="p6.jpg" alt="Ашигтай бактеритай цэлцгэнүүр">
+    <div class="card-body">
+    <div class="tag">1 ширхэг = 120 тэрбум ашигтай бактери</div>
+    <h2>АШИГТАЙ БАКТЕРИТАЙ ЦЭЛЦГЭНҮҮР</h2>
+    <div class="desc">Гэдэсний хэвийн үйл ажиллагааг идэвхжүүлэх, дархлаа дэмжих сүүн хүчлийн бактери болон бифидо бактери агуулсан бүх насныханд зориулсан таламжтай амттай зөөлөн цэлцгэнүүр юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Гэдэсний хэвийн үйл ажиллагааг хангах</li>
+        <li>Дархлаа дэмжих</li>
+        <li>Өтгөн хаталтаас сэргийлэх</li>
+        <li>Харшлын урвалыг багасгах</li>
+        <li>Ядаргаанаас урьдчилан сэргийлэх</li>
+        <li>Ханиад томуу болон бусад халдварт өвчнөөс урьдчилан сэргийлэх</li>
+        <li>Цус багадалтаас урьдчилан сэргийлэх</li>
+        <li>Гэдэсний хэвийн орчныг сайжруулах</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Сүүн хүчлийн бактери Faecalis EC-12</li>
+          <li>Faecalis бактери FK-23</li>
+          <li>Бифидо бактери</li>
+        </ul>
+        <ul>
+          <li>Галакто-олигосахарид</li>
+          <li>Коллаген</li>
+          <li>Хиалуроны хүчил</li>
+          <li>Үл боловсрох декстрин (хүнсний эслэг)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>1-2 ширхгийг шуудзадалж, идэж хэрэглэнэ. 2-оос дээш насныханд.</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">210 г (15г × 14 ширхэг)</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p7" class="card has-thumb">
+    <img class="thumb" src="p7.jpg" alt="Ногооны цэлцгэнүүр Aojiru Jelly">
+    <div class="card-body">
+    <div class="tag">Амархнаар, амттайгаар ногоо идэцгээе</div>
+    <h2>НОГООНЫ ЦЭЛЦГЭНҮҮР / AOJIRU JELLY /</h2>
+    <div class="desc">Арвайн залуу навч, сүүн хүчлийн бактери, бифидо бактери болон хүний биед шаардлагатай бусад нэмэлт найрлагуудыг агуулсан хүнсний ногооны дутагдлаас сэргийлэх, дархлаа дэмжих, гэдэсний хэвийн орчинг тэнцвэржүүлэх ач тустай хэрэглэхэд хялбар, алимны амттай зөөлөн цэлцгэнүүр хэлбэрийн бүтээгдэхүүн.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Гэдэсний хэвийн орчинг дэмжин сайжруулна</li>
+        <li>Эслэгээр баялаг учир өтгөн хаталтаас урьдчилан сэргийлэх</li>
+        <li>Дархлаа дэмжинэ</li>
+        <li>Ногооны дутагдлыг нөхөх</li>
+        <li>Төмөр, кальци, цайр, витамин C, B1, B2, B3, B6, фолийн хүчил агуулсан тул цус төлжилтийг дэмжих үйлчилгээтэй</li>
+        <li>Амин дэм, эрдэс бодисын дутагдалаас сэргийлнэ</li>
+        <li>Биеийн жинг барихад туслах үйлчилгээтэй</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Арвайн залуу навч</li>
+          <li>18 төрлийн сүүн хүчлийн бактери</li>
+          <li>5 төрлийн бифидо бактери</li>
+          <li>75 төрлийн ургамлын фермент</li>
+        </ul>
+        <ul>
+          <li>Ихэс</li>
+          <li>Коллаген</li>
+          <li>Кальци</li>
+          <li>Төмөр</li>
+          <li>Хар цуу</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul>
+        <li>Өдөрт 1-2 ширхгийг шуудидэж хэрэглэнэ</li>
+        <li>2-оос дээш насныханд хэрэглэнэ</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">150 г (15г × 14 ширхэг)</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p8" class="card has-thumb">
+    <img class="thumb" src="p8.jpg" alt="Найруулж уудаг ногооны шүүс">
+    <div class="card-body">
+    <div class="tag">Эрүүл амьдралын эрч хүч АОЖИРУ</div>
+    <h2>НАЙРУУЛЖ УУДАГ НОГООНЫ ШҮҮС</h2>
+    <div class="desc">Япон улсын Kokando компанийн бүтээгдэхүүн Kokando Aojiru нь ялам модны навч, 10 төрлийн хүнсний ногоо болон хулсны хар нүүрс, хуурсан бор будаа, манго, гадил жимсний найрлагатай, хүнсний ногоог өдөр бүр хэрэглэж чаддаггүй хүмүүсийн хоолны шим тэжээлийн тэнцвэрийг хангах зориулалттай найруулж уудаг ногооны шүүс юм.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Олон төрлийн амин дэм, эрдэс бодис, хүнсний эслэгээр баялаг</li>
+        <li>Хүнсний ногооны дутагдлаас сэргийлнэ</li>
+        <li>Үндсэн түүхий эд болох ялам модны навч нь нарийн гэдсэн дэх сахарын шимэгдэлтийг бууруулж, чихрийн шижин өвчнөөс урьдчилан сэргийлэх үйлчилгээтэй</li>
+        <li>Хүнсний эслэг нь өтгөн хаталтаас сэргийлэхээс гадна гэдсэн дэх ашигтай бактерийг идэвхжүүлж, дархлааг дэмждэг</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Аспарагус (Asparagus)</li>
+          <li>Брокколи (Broccoli)</li>
+          <li>Буржгар байцаа (Kale)</li>
+          <li>Буурцай (Spinach)</li>
+          <li>Окра (Abelmoschus esculentus)</li>
+          <li>Ялам модны навч (Mulberry leaves)</li>
+        </ul>
+        <ul>
+          <li>Цагаан лууванги навч (Radish leaves)</li>
+          <li>Шаралж (Artemisia princeps)</li>
+          <li>Яншуй (Parsley)</li>
+          <li>Хулуу (Pumpkin)</li>
+          <li>Япон буудцай (Komatsuna)</li>
+        </ul>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-top:8px;">Нэмэлт найрлага: манго, гадил, хулсны хар нүүрс, хуурсан бор будаа</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Нэг ширхгийг аяганд хийж дээрээс нь тохирох хэмжээний ус (100-150 мл) эсвэл халуун, хүйтэн сүү, тараг зэргийг хийж сайтар хутгаад уугна</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">15 ширхэг</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="p9" class="card has-thumb">
+    <img class="thumb" src="p9.jpg" alt="Найруулж уудаг ногооны шүүс - Kale">
+    <div class="card-body">
+    <div class="tag">1 тэрбум ашигтай бактери агуулсан</div>
+    <h2>НАЙРУУЛЖ УУДАГ НОГООНЫ ШҮҮС</h2>
+    <div class="desc">Ашигтай бактеритай аожиру нь арвайн навч (соёолж), ashitaba, kale байцаа, лактоферрин, сүүн хүчлийн бактери, матча цай, витамин B6 болон бусад нэмэлт найрлагуудыг агуулсан хүнсний ногооны дутагдлаас сэргийлэх, дархлаа дэмжих, гэдэсний хэвийн орчинг тэнцвэржүүлэх ач тустай хэрэглэхэд хялбар найруулж уудаг ногооны шүүс.</div>
+
+    <div class="block">
+      <div class="block-title">Үйлчилгээ, үр дүн</div>
+      <ul>
+        <li>Хүнсний ногооны дутагдлаас сэргийлэх</li>
+        <li>Дархлаа дэмжих</li>
+        <li>Амин дэм, эрдэс бодисын дутагдлаас сэргийлэх</li>
+        <li>Эслэгээр баялаг учир өтгөн хаталтаас урьдчилан сэргийлэх</li>
+        <li>Хоолны шингэц сайжруулах</li>
+        <li>Гэдэсний ашигтай бактерийг нэмэгдүүлж, гэдэсний хэвийн орчинг тэнцвэржүүлэх</li>
+        <li>Цус багадалтаас урьдчилан сэргийлэх</li>
+        <li>Тархины үйл ажиллагааг сайжруулахад нөлөөлж, зүрхний шигдээс, мартах өвчнөөс сэргийлэх бөгөөд тухтай амрахад туслах болно. Үүнээс гадна цусан дахь сахарын хэмжээг тэнцвэржүүлнэ</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Найрлага</div>
+      <div class="grid2">
+        <ul>
+          <li>Арвайн соёолж</li>
+          <li>Ashitaba</li>
+          <li>Kale</li>
+          <li>Лактоферрин</li>
+          <li>Nano ECF сүүн хүчлийн бактери</li>
+        </ul>
+        <ul>
+          <li>Хүнсний эслэг</li>
+          <li>Витамин B6</li>
+          <li>Фрукто-олигосахарид</li>
+          <li>Үжи матча цай</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Хэрэглэх заавар</div>
+      <ul><li>Өдөрт 1-2 уутыг (3 г) 100 мл орчим халуун, бүлээн, хүйтэн ус, сүүнд найруулж уухаас гадна тараг, зайрмаг зэрэгт нэмж хэрэглэж болно</li></ul>
+    </div>
+
+    <div class="block">
+      <div class="block-title">Савлагаа</div>
+      <div class="pill-row"><span class="pill">72 г (3г × 24 ширхэг)</span></div>
+    </div>
+    </div>
+  </section>
+
+  <section id="partners" class="card">
+    <div class="tag">Хамтын ажиллагаа</div>
+    <h2>Түнш компаниуд</h2>
+    <div class="partners">
+      <h3>Япон дахь түнш компаниуд</h3>
+      <div>廣貫堂<br>大協薬品工業株式会社<br>グレートアンドグランド株式会社<br>元気プロジェクト<br>日本ケフィア株式会社</div>
+      <div>ASTRIM<br>明治薬品株式会社<br>日新薬品工業株式会社<br>アピ株式会社<br>アダプトゲン製薬九州株式会社</div>
+
+      <h3>Монгол дахь түнш компаниуд</h3>
+      <div>Health Point<br>МОНОС групп<br>АзиФарм эмийн сан<br>НОМИН<br>Carrefour</div>
+      <div>Ayaluunpharm<br>ХҮРМЭН<br>Гашуун булаг ХХК эмийн сан<br>emart<br>EFES Supermarket</div>
+    </div>
+  </section>
+
+  <section id="contact" class="card contact-card">
+    <div class="tag">Холбоо барих</div>
+    <h2>Хаяг, холбоо барих</h2>
+    <div class="contact-row">Улаанбаатар хот, Баянзүрх дүүрэг, Токиогийн гудамж, Нисора тауэр 3 давхар</div>
+    <div class="contact-row">Утас: 976-70110602, 95802346, 80802346</div>
+    <div class="contact-row">И-мэйл: <a href="mailto:info@japanmedical.mn">info@japanmedical.mn</a></div>
+    <div class="contact-row">Facebook: JPNM</div>
+    <div class="contact-row">Вэбсайт: <a href="https://www.japanmedical.mn" target="_blank">www.japanmedical.mn</a></div>
+  </section>
+
+</main>
+
+<footer>© Japan Medical 2026</footer>
+
+<a href="#" class="top-btn" id="topBtn">↑</a>
+
+<script>
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 500){ topBtn.classList.add('show'); } else { topBtn.classList.remove('show'); }
+  });
+  topBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+
+</body>
+</html>
